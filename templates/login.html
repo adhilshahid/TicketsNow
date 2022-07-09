@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <title>LogIn</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+ <body style="background-image:url(/static/homewall.jpg);background-repeat: no-repeat;background-size: cover;">
+<h1><b>TicketsNow</b></h1>
+    <div class="container">
+      <h1></h1>
+      <br>
+      <div class="login-box" style="position:absolute;left:650px;top:160px;">
+        <div class="login-logo">
+            <b>
+                <div class="center" style="font-size:32px ;color:  #000000 ;font-family:courier,arial,helvetica">Login</div></b>
+        </div>
+        <form name="loginForm" action="" method="post">
+          <div class="form-group has-feedback">
+            <label><b>E-Mail</b></label>
+            <br>
+            <input type="text" placeholder="ID" name="usermailid" value="{{
+          request.form.usermailid }}">
+          </div>
+          <div class="form-group has-feedback">
+              <label><b>Password</b></label>
+            <br>
+           <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+          </div>
+            <br>
+          <input class="btn btn-default" type="submit" value="Login">
+       </form>
+       <a href="/register">Register</a>
+      </div>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+</html>

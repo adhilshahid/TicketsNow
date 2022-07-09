@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <title>Book Now</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+
+<body style="background-image:url(/static/orderwall.jpg);background-repeat: no-repeat;background-size: cover;">
+
+
+  <h1><b>TicketsNow</b></h1>
+  <div class="container">
+    <br>
+    <table style=" background-repeat:no-repeat; width:100%;margin:0; text-align: center;" cellpadding="0"
+      cellspacing="0" border=black>
+      <th class="name-row">Movie name</th>
+      <th class="name-row">No of Tickets</th>
+      <th class="name-row">Status of order</th>
+      <th class="name-row">Amount</th>
+
+      <tbody style="font-weight: normal;font-family:Arial;color:#273746">
+        {% for item in orderitems %}
+        <tr>
+          <td class="name-row">{{item.itemname}}</td>
+          <td class="name-row">{{item.nooftickets}}</td>
+          <td class="name-row">{{item.statusoforder}}</td>
+          <td class="name-row">{{item.cost}}</td>
+          </tbody>
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="login-box" style="position:absolute;left:490px;top:100px; margin-top:100px">
+      <div class="login-logo">
+        <b>
+          <div class="center" style="font-size:32px ;color:black; font-family:courier,arial,helvetica;">Order Details
+          </div>
+        </b>
+      </div>
+      <form action="/orderitem" method="post">
+        <div class="form-group has-feedback">
+          <label><b>Movie Name</b></label>
+          <br>
+          <input type="text" placeholder="Movie name" name="itemname" value="{{
+            request.form.itemname }}">
+        </div>
+        <div class="form-group has-feedback">
+          <label><b>No of Tickets</b></label>
+          <br>
+          <input type="text" placeholder="No of Tickets" name="nooftickets" value="{{
+            request.form.nooftickets }}">
+        </div>
+
+        <div class="form-group has-feedback">
+          <label><b>Cost</b></label>
+          <br>
+          <input type="text" placeholder="Price" name="cost" value="{{request.form.cost }}">
+        </div>
+        <div class="form-group has-feedback">
+          <br>
+          <input class="btn btn-default" type="submit" value="Book Now">
+        </div>
+      </form>
+    </div>
+    {% if error %}
+    <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+  </div>
+</body>
+
+</html>
